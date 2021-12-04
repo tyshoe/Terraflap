@@ -2,9 +2,10 @@
 //add highscore with text file
 //add leaderboards screen
 //add different modes
-//increase diffulty with playtime?
+//increase difficulty with playtime?
 //difficulty settings
 //add more sounds for death and flap
+//start menu
 
 using System;
 using System.Collections.Generic;
@@ -169,6 +170,13 @@ namespace Flappy_bird
                 start_game();
                  
             }
+        }
+
+        private void Start_button_Click(object sender, EventArgs e)
+        {
+            Start_button.Hide();
+            Leaderboards_button.Hide();
+            start_game();
         }
     }
 }
