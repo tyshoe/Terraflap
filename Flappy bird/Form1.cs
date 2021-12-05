@@ -3,7 +3,7 @@
 //add more sounds for death and flap
 //add currency/store
 //add options menu for cosmetics
-//TODO: add sounds - finish highscore/score UI - create title 
+//TODO: add sounds
 
 using System;
 using System.IO;
@@ -28,7 +28,7 @@ namespace Flappy_bird
 
 
         //title, character, ground
-        private Point title_pos = new Point(213, 92);
+        private Point title_pos = new Point(248, 100);
         private Point guide_pos = new Point(486, 283);
         private Point ground_pos = new Point(0, 664);
 

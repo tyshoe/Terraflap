@@ -111,7 +111,7 @@ namespace Flappy_bird.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 10.
+        ///   Looks up a localized string similar to 108.
         /// </summary>
         internal static string HighScores {
             get {

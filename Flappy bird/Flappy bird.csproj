@@ -87,9 +87,6 @@
     <None Include="Resources\point.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\title.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Forest_background.png" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +109,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\score.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\title1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

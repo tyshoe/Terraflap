@@ -66,11 +66,11 @@ namespace Flappy_bird
             // 
             this.Game_Title.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Game_Title.BackColor = System.Drawing.Color.Transparent;
-            this.Game_Title.Image = global::Flappy_bird.Properties.Resources.title;
-            this.Game_Title.Location = new System.Drawing.Point(376, 92);
+            this.Game_Title.Image = ((System.Drawing.Image)(resources.GetObject("Game_Title.Image")));
+            this.Game_Title.Location = new System.Drawing.Point(248, 100);
             this.Game_Title.Margin = new System.Windows.Forms.Padding(1);
             this.Game_Title.Name = "Game_Title";
-            this.Game_Title.Size = new System.Drawing.Size(259, 90);
+            this.Game_Title.Size = new System.Drawing.Size(528, 150);
             this.Game_Title.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.Game_Title.TabIndex = 7;
             this.Game_Title.TabStop = false;
