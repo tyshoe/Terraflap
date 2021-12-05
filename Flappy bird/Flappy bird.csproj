@@ -90,16 +90,25 @@
     <None Include="Resources\pipedown.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\play_button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\leaderboards_button.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\guide.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\point.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Forest_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HighScores.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game_over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start_button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

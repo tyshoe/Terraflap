@@ -8,6 +8,7 @@
 //start menu
 
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,22 +23,26 @@ namespace Flappy_bird
 {
     public partial class Game_Form : Form
     {
-        private int _pipeSpeed = 10;
-        private int _gravity = 8;
+        private int _pipeSpeed;
+        private int _gravity;
         private int _score = 0;
+        private int _HighScore;
 
 
+        private Point start_menu_title = new Point(213, 92);
+        private Point start_menu_center = new Point(310, 241);
+        private Point start_menu_start = new Point(150, 412);
+        
         public Game_Form()
         {
             InitializeComponent();
-            Bot_pipe_pic.Left = 700;
-            Top_pipe_pic.Left = 700;
+            Title_screen();
 
         }
 
         private void gameTimerEvent(object sender, EventArgs e)
         {
-            bird_pic.Top += _gravity;
+            guide_pic.Top += _gravity;
             Bot_pipe_pic.Left -= _pipeSpeed;
             Top_pipe_pic.Left -= _pipeSpeed;
             score_lbl.Text = _score.ToString();
@@ -48,6 +53,7 @@ namespace Flappy_bird
             {
                 _score++;
                 gain_point();
+                Set_HighScore();
             }
 
 
@@ -60,10 +66,10 @@ namespace Flappy_bird
 
 
 
-            //if bird hits pipes or ground
-            if (bird_pic.Bounds.IntersectsWith(Bot_pipe_pic.Bounds) || bird_pic.Bounds.IntersectsWith(Top_pipe_pic.Bounds) || bird_pic.Bounds.IntersectsWith(Ground_pic.Bounds))
+            //if guide hits pipe/ground
+            if (guide_pic.Bounds.IntersectsWith(Bot_pipe_pic.Bounds) || guide_pic.Bounds.IntersectsWith(Top_pipe_pic.Bounds) || guide_pic.Bounds.IntersectsWith(Ground_pic.Bounds))
             {
-                _ = endGameAsync();
+                Game_over();
             }
 
         }
@@ -77,7 +83,7 @@ namespace Flappy_bird
 
         private void pipe_location()
         {
-            System.Random random = new System.Random();
+            Random random = new Random();
             int number = random.Next(1,4);
 
             if (number == 1)//top location
@@ -121,7 +127,7 @@ namespace Flappy_bird
         {
             if (e.KeyCode == Keys.Space)
             {
-                _gravity = -8;
+                _gravity = -4;
             }
         }
 
@@ -129,7 +135,7 @@ namespace Flappy_bird
         {
             if (e.KeyCode == Keys.Space)
             {
-                _gravity = 8;
+                _gravity = 3;
             }
         }
 
@@ -138,45 +144,76 @@ namespace Flappy_bird
             _score = 0;
             Bot_pipe_pic.Left = 700;
             Top_pipe_pic.Left = 700;
-            bird_pic.Location = new Point(268, 268);
+            guide_pic.Location = start_menu_center;
             _pipeSpeed = 0;
             _gravity = 0;
-
         }
 
         private void start_game()
         {
-            _pipeSpeed = 10;
-            _gravity = 5;
+            _pipeSpeed = 5;
+            _gravity = 3;
             game_timer.Start();
         }
 
-        private async Task endGameAsync()
+        private void Game_over()
         {
             game_timer.Stop();//stops game
+            Get_HighScore();
+            Game_over_img.Show();
+            HighScore_lbl.Show();
+            Start_button.Show();
+            
+        }
 
-            //message box
-            DialogResult d;
-            d = MessageBox.Show("Play Again?", "Game Over!", MessageBoxButtons.YesNo);
+        private void Title_screen()
+        {
+            Game_Title.Location = start_menu_title;
+            guide_pic.Location = start_menu_center;
+            Start_button.Location = start_menu_start;
+            Bot_pipe_pic.Left = 700;
+            Top_pipe_pic.Left = 700;
+            Game_over_img.Hide();
+            HighScore_lbl.Hide();
 
-            if (d == DialogResult.No)//if they want to close game
-            {
-                Close();
-            }
-            if (d == DialogResult.Yes)//if they want to continue
-            {
-                reset_game();
-                await Task.Delay(750);
-                start_game();
-                 
-            }
         }
 
         private void Start_button_Click(object sender, EventArgs e)
         {
+            reset_game();
             Start_button.Hide();
-            Leaderboards_button.Hide();
+            Game_Title.Hide();
             start_game();
         }
+
+        private void Set_HighScore()
+        {
+            var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            string filePath = Path.Combine(projectPath, "Resources/HighScores.txt");
+            StreamWriter writer = new StreamWriter(filePath, false);
+            if (_score > _HighScore)
+            {
+                writer.Write(_score);
+                writer.Close();
+            }
+            else
+            {
+                writer.Write(_HighScore);
+                writer.Close();
+            }
+            
+        }
+
+        private void Get_HighScore()
+        {
+            var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            string filePath = Path.Combine(projectPath, "Resources/HighScores.txt");
+            StreamReader current_high = new StreamReader(filePath, false);
+            _HighScore = Convert.ToInt32(current_high.ReadLine());
+            current_high.Close();
+            HighScore_lbl.Text = "HighScore: " + Convert.ToString(_HighScore);
+            
+        }
+
     }
 }
