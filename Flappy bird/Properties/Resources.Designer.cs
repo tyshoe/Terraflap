@@ -101,7 +101,17 @@ namespace Flappy_bird.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hi_score {
+            get {
+                object obj = ResourceManager.GetObject("hi-score", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 10.
         /// </summary>
         internal static string HighScores {
             get {
@@ -115,6 +125,16 @@ namespace Flappy_bird.Properties {
         internal static System.IO.UnmanagedMemoryStream point {
             get {
                 return ResourceManager.GetStream("point", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap score {
+            get {
+                object obj = ResourceManager.GetObject("score", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
