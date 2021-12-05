@@ -30,9 +30,11 @@ namespace Flappy_bird
 
 
         private Point start_menu_title = new Point(213, 92);
-        private Point start_menu_center = new Point(310, 241);
-        private Point start_menu_start = new Point(150, 412);
-        
+        private Point start_menu_guide = new Point(486, 283);//window size/2 - ground size
+        private Point start_menu_start = new Point(320, 500);
+        private Point ground = new Point(0, 664);
+        private Point game_over = new Point(320, 150);
+
         public Game_Form()
         {
             InitializeComponent();
@@ -85,53 +87,53 @@ namespace Flappy_bird
             if (number == 1)//top location
             {
                 Top_WAF.Top = -800;
-                Top_WAF.Left = 700;
+                Top_WAF.Left = 1100;
 
 
                 Bottom_WAF.Top = 250;
-                Bottom_WAF.Left = 700;
+                Bottom_WAF.Left = 1100;
 
             }
             if (number == 2)//middle location
             {
                 Top_WAF.Top = 0;
-                Top_WAF.Left = 700;
+                Top_WAF.Left = 1100;
 
                 Bottom_WAF.Top = 375;
-                Bottom_WAF.Left = 700;
+                Bottom_WAF.Left = 1100;
 
             }
             if (number == 3)//bottom location
             {
                 Top_WAF.Top = 0;
-                Top_WAF.Left = 700;
+                Top_WAF.Left = 1100;
 
                 Bottom_WAF.Top = 500;
-                Bottom_WAF.Left = 700;
+                Bottom_WAF.Left = 1100;
             }
             if (number == 4)
             {
                 Top_WAF.Top = 0;
-                Top_WAF.Left = 700;
+                Top_WAF.Left = 1100;
 
                 Bottom_WAF.Top = 500;
-                Bottom_WAF.Left = 700;
+                Bottom_WAF.Left = 1100;
             }
             if (number == 5)
             {
                 Top_WAF.Top = 0;
-                Top_WAF.Left = 700;
+                Top_WAF.Left = 1100;
 
                 Bottom_WAF.Top = 500;
-                Bottom_WAF.Left = 700;
+                Bottom_WAF.Left = 1100;
             }
             if (number == 6)
             {
                 Top_WAF.Top = 0;
-                Top_WAF.Left = 700;
+                Top_WAF.Left = 1100;
 
                 Bottom_WAF.Top = 500;
-                Bottom_WAF.Left = 700;
+                Bottom_WAF.Left = 1100;
             }
 
 
@@ -156,9 +158,9 @@ namespace Flappy_bird
         private void reset_game()
         {
             _score = 0;
-            Bottom_WAF.Left = 700;
-            Top_WAF.Left = 700;
-            guide_pic.Location = start_menu_center;
+            Bottom_WAF.Left = 1100;
+            Top_WAF.Left = 1100;
+            guide_pic.Location = start_menu_guide;
             _pipeSpeed = 0;
             _gravity = 0;
         }
@@ -176,6 +178,7 @@ namespace Flappy_bird
         {
             game_timer.Stop();//stops game
             Get_HighScore();
+            Game_over_img.Location = game_over;
             Game_over_img.Show();
             HighScore_lbl.Show();
             Start_button.Show();
@@ -185,12 +188,13 @@ namespace Flappy_bird
         private void Title_screen()
         {
             Game_Title.Location = start_menu_title;
-            guide_pic.Location = start_menu_center;
+            guide_pic.Location = start_menu_guide;
             Start_button.Location = start_menu_start;
-            Bottom_WAF.Left = 700;
-            Top_WAF.Left = 700;
+            Bottom_WAF.Left = 1100;
+            Top_WAF.Left = 1100;
             Game_over_img.Hide();
             HighScore_lbl.Hide();
+            Ground_pic.Location = ground;
         }
          
         private void Start_button_Click(object sender, EventArgs e)

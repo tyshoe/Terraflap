@@ -75,7 +75,7 @@ namespace Flappy_bird
             this.Start_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Start_button.BackColor = System.Drawing.Color.Transparent;
             this.Start_button.Image = global::Flappy_bird.Properties.Resources.start_button;
-            this.Start_button.Location = new System.Drawing.Point(313, 537);
+            this.Start_button.Location = new System.Drawing.Point(320, 537);
             this.Start_button.Margin = new System.Windows.Forms.Padding(1);
             this.Start_button.Name = "Start_button";
             this.Start_button.Size = new System.Drawing.Size(384, 88);
@@ -100,7 +100,7 @@ namespace Flappy_bird
             // Ground_pic
             // 
             this.Ground_pic.BackColor = System.Drawing.Color.Transparent;
-            this.Ground_pic.Image = global::Flappy_bird.Properties.Resources.ground;
+            this.Ground_pic.Image = ((System.Drawing.Image)(resources.GetObject("Ground_pic.Image")));
             this.Ground_pic.Location = new System.Drawing.Point(0, 664);
             this.Ground_pic.Name = "Ground_pic";
             this.Ground_pic.Size = new System.Drawing.Size(1024, 136);
@@ -112,7 +112,7 @@ namespace Flappy_bird
             // 
             this.Bottom_WAF.BackColor = System.Drawing.Color.Transparent;
             this.Bottom_WAF.Image = global::Flappy_bird.Properties.Resources.waf;
-            this.Bottom_WAF.Location = new System.Drawing.Point(572, 361);
+            this.Bottom_WAF.Location = new System.Drawing.Point(858, 369);
             this.Bottom_WAF.Name = "Bottom_WAF";
             this.Bottom_WAF.Size = new System.Drawing.Size(148, 840);
             this.Bottom_WAF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -125,7 +125,7 @@ namespace Flappy_bird
             // 
             this.Top_WAF.BackColor = System.Drawing.Color.Transparent;
             this.Top_WAF.Image = global::Flappy_bird.Properties.Resources.waf;
-            this.Top_WAF.Location = new System.Drawing.Point(572, -636);
+            this.Top_WAF.Location = new System.Drawing.Point(858, -637);
             this.Top_WAF.Name = "Top_WAF";
             this.Top_WAF.Size = new System.Drawing.Size(148, 840);
             this.Top_WAF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -151,12 +151,14 @@ namespace Flappy_bird
             // 
             // Game_over_img
             // 
+            this.Game_over_img.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Game_over_img.BackColor = System.Drawing.Color.Transparent;
             this.Game_over_img.Image = global::Flappy_bird.Properties.Resources.game_over;
-            this.Game_over_img.Location = new System.Drawing.Point(150, 94);
+            this.Game_over_img.Location = new System.Drawing.Point(320, 92);
+            this.Game_over_img.Margin = new System.Windows.Forms.Padding(1);
             this.Game_over_img.Name = "Game_over_img";
             this.Game_over_img.Size = new System.Drawing.Size(384, 88);
-            this.Game_over_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Game_over_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.Game_over_img.TabIndex = 3;
             this.Game_over_img.TabStop = false;
             // 
