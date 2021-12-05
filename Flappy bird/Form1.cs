@@ -105,7 +105,7 @@ namespace Flappy_bird
             if (Bottom_WOF.Left == 360 || Top_WOF.Left == 360)
             {
                 _score++;
-                Gain_point();
+                Play_score();
                 Set_HighScore();
             }
 
@@ -118,6 +118,7 @@ namespace Flappy_bird
             //if guide hits wof/ground
             if (guide_pic.Bounds.IntersectsWith(Bottom_WOF.Bounds) || guide_pic.Bounds.IntersectsWith(Top_WOF.Bounds) || guide_pic.Bounds.IntersectsWith(Ground_pic.Bounds))
             {
+                Play_death();
                 Game_over();
                 death_timer.Start();
             }
@@ -297,9 +298,14 @@ namespace Flappy_bird
 
 
         //sounds
-        private void Gain_point()
+        private void Play_score()
         {
             SoundPlayer audio = new SoundPlayer(Properties.Resources.point);
+            audio.Play();
+        }
+        private void Play_death()
+        {
+            SoundPlayer audio = new SoundPlayer(Properties.Resources.death);
             audio.Play();
         }
 
