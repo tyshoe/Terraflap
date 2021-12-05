@@ -101,31 +101,11 @@ namespace Flappy_bird.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2.
+        ///   Looks up a localized string similar to 4.
         /// </summary>
         internal static string HighScores {
             get {
                 return ResourceManager.GetString("HighScores", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap pipe {
-            get {
-                object obj = ResourceManager.GetObject("pipe", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap pipedown {
-            get {
-                object obj = ResourceManager.GetObject("pipedown", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -154,6 +134,16 @@ namespace Flappy_bird.Properties {
         internal static System.Drawing.Bitmap title {
             get {
                 object obj = ResourceManager.GetObject("title", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap waf {
+            get {
+                object obj = ResourceManager.GetObject("waf", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

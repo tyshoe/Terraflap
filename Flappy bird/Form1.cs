@@ -44,12 +44,12 @@ namespace Flappy_bird
         private void gameTimerEvent(object sender, EventArgs e)
         {
             guide_pic.Top += _gravity;
-            Bot_pipe_pic.Left -= _pipeSpeed;
-            Top_pipe_pic.Left -= _pipeSpeed;
+            Bottom_WAF.Left -= _pipeSpeed;
+            Top_WAF.Left -= _pipeSpeed;
             score_lbl.Text = _score.ToString();
 
             //if left side pipe hits coor 240, add point
-            if (Bot_pipe_pic.Left == 240 || Top_pipe_pic.Left == 240)
+            if (Bottom_WAF.Left == 240 || Top_WAF.Left == 240)
             {
                 _score++;
                 gain_point();
@@ -57,13 +57,13 @@ namespace Flappy_bird
             }
 
             //when pipe goes off screen, change pipe to start over again
-            if (Bot_pipe_pic.Left < -100 || Top_pipe_pic.Left < -100)
+            if (Bottom_WAF.Left < -100 || Top_WAF.Left < -100)
             {
                 pipe_location();
             }
 
             //if guide hits pipe/ground
-            if (guide_pic.Bounds.IntersectsWith(Bot_pipe_pic.Bounds) || guide_pic.Bounds.IntersectsWith(Top_pipe_pic.Bounds) || guide_pic.Bounds.IntersectsWith(Ground_pic.Bounds))
+            if (guide_pic.Bounds.IntersectsWith(Bottom_WAF.Bounds) || guide_pic.Bounds.IntersectsWith(Top_WAF.Bounds) || guide_pic.Bounds.IntersectsWith(Ground_pic.Bounds))
             {
                 Game_over();
             }
@@ -84,36 +84,54 @@ namespace Flappy_bird
 
             if (number == 1)//top location
             {
-                Top_pipe_pic.Top = -125;
-                Top_pipe_pic.Left = 700;
-                Top_pipe_pic.Height = 218;
+                Top_WAF.Top = -800;
+                Top_WAF.Left = 700;
 
 
-                Bot_pipe_pic.Top = 250;
-                Bot_pipe_pic.Left = 700;
-                Bot_pipe_pic.Height = 351;
+                Bottom_WAF.Top = 250;
+                Bottom_WAF.Left = 700;
 
             }
             if (number == 2)//middle location
             {
-                Top_pipe_pic.Top = 0;
-                Top_pipe_pic.Left = 700;
-                Top_pipe_pic.Height = 218;
+                Top_WAF.Top = 0;
+                Top_WAF.Left = 700;
 
-                Bot_pipe_pic.Top = 375;
-                Bot_pipe_pic.Left = 700;
-                Bot_pipe_pic.Height = 226;
+                Bottom_WAF.Top = 375;
+                Bottom_WAF.Left = 700;
 
             }
             if (number == 3)//bottom location
             {
-                Top_pipe_pic.Top = 0;
-                Top_pipe_pic.Left = 700;
-                Top_pipe_pic.Height = 343;
+                Top_WAF.Top = 0;
+                Top_WAF.Left = 700;
 
-                Bot_pipe_pic.Top = 500;
-                Bot_pipe_pic.Left = 700;
-                Bot_pipe_pic.Height = 226;
+                Bottom_WAF.Top = 500;
+                Bottom_WAF.Left = 700;
+            }
+            if (number == 4)
+            {
+                Top_WAF.Top = 0;
+                Top_WAF.Left = 700;
+
+                Bottom_WAF.Top = 500;
+                Bottom_WAF.Left = 700;
+            }
+            if (number == 5)
+            {
+                Top_WAF.Top = 0;
+                Top_WAF.Left = 700;
+
+                Bottom_WAF.Top = 500;
+                Bottom_WAF.Left = 700;
+            }
+            if (number == 6)
+            {
+                Top_WAF.Top = 0;
+                Top_WAF.Left = 700;
+
+                Bottom_WAF.Top = 500;
+                Bottom_WAF.Left = 700;
             }
 
 
@@ -138,8 +156,8 @@ namespace Flappy_bird
         private void reset_game()
         {
             _score = 0;
-            Bot_pipe_pic.Left = 700;
-            Top_pipe_pic.Left = 700;
+            Bottom_WAF.Left = 700;
+            Top_WAF.Left = 700;
             guide_pic.Location = start_menu_center;
             _pipeSpeed = 0;
             _gravity = 0;
@@ -169,8 +187,8 @@ namespace Flappy_bird
             Game_Title.Location = start_menu_title;
             guide_pic.Location = start_menu_center;
             Start_button.Location = start_menu_start;
-            Bot_pipe_pic.Left = 700;
-            Top_pipe_pic.Left = 700;
+            Bottom_WAF.Left = 700;
+            Top_WAF.Left = 700;
             Game_over_img.Hide();
             HighScore_lbl.Hide();
         }
