@@ -29,11 +29,21 @@ namespace Flappy_bird
         private int _HighScore;
 
 
-        private Point start_menu_title = new Point(213, 92);
-        private Point start_menu_guide = new Point(486, 283);//window size/2 - ground size
-        private Point start_menu_start = new Point(320, 500);
-        private Point ground = new Point(0, 664);
-        private Point game_over = new Point(320, 150);
+        private Point title_pos = new Point(213, 92);
+        private Point guide_pos = new Point(486, 283);//window size/2 - ground size
+        private Point start_pos = new Point(320, 500);
+        private Point ground_pos = new Point(0, 664);
+        private Point game_over_pos = new Point(320, 150);
+
+        private Point TWOF_pos_1 = new Point(1050, -780);
+        private Point TWOF_pos_2 = new Point(1050, -660);
+        private Point TWOF_pos_3 = new Point(1050, -540);
+        private Point TWOF_pos_4 = new Point(1050, -420);
+
+        private Point BWOF_pos_1 = new Point(1050, 252);
+        private Point BWOF_pos_2 = new Point(1050, 372);
+        private Point BWOF_pos_3 = new Point(1050, 492);
+        private Point BWOF_pos_4 = new Point(1050, 612);
 
         public Game_Form()
         {
@@ -46,94 +56,67 @@ namespace Flappy_bird
         private void gameTimerEvent(object sender, EventArgs e)
         {
             guide_pic.Top += _gravity;
-            Bottom_WAF.Left -= _pipeSpeed;
-            Top_WAF.Left -= _pipeSpeed;
+            Bottom_WOF.Left -= _pipeSpeed;
+            Top_WOF.Left -= _pipeSpeed;
             score_lbl.Text = _score.ToString();
 
-            //if left side pipe hits coor 240, add point
-            if (Bottom_WAF.Left == 240 || Top_WAF.Left == 240)
+            //if left side WOF hits coor 240, add point
+            if (Bottom_WOF.Left == 240 || Top_WOF.Left == 240)
             {
                 _score++;
-                gain_point();
+                Gain_point();
                 Set_HighScore();
             }
 
-            //when pipe goes off screen, change pipe to start over again
-            if (Bottom_WAF.Left < -100 || Top_WAF.Left < -100)
+            //when wof goes off screen, respawn wof on right
+            if (Bottom_WOF.Left < -100 || Top_WOF.Left < -100)
             {
-                pipe_location();
+                WOF_spawn();
             }
 
-            //if guide hits pipe/ground
-            if (guide_pic.Bounds.IntersectsWith(Bottom_WAF.Bounds) || guide_pic.Bounds.IntersectsWith(Top_WAF.Bounds) || guide_pic.Bounds.IntersectsWith(Ground_pic.Bounds))
+            //if guide hits wof/ground
+            if (guide_pic.Bounds.IntersectsWith(Bottom_WOF.Bounds) || guide_pic.Bounds.IntersectsWith(Top_WOF.Bounds) || guide_pic.Bounds.IntersectsWith(Ground_pic.Bounds))
             {
                 Game_over();
+                death_timer.Start();
+                
+
             }
 
         }
 
         //method to set sound to play the point gain sound
-        private void gain_point() // defining the function
+        private void Gain_point() // defining the function
         {
             SoundPlayer audio = new SoundPlayer(Properties.Resources.point); // here WindowsFormsApplication1 is the namespace and Connect is the audio file name
             audio.Play();
         }
 
-        private void pipe_location()
+        private void WOF_spawn()
         {
             Random random = new Random();
-            int number = random.Next(1,4);
+            int number = random.Next(1,5);
 
-            if (number == 1)//top location
+            if (number == 1)
             {
-                Top_WAF.Top = -800;
-                Top_WAF.Left = 1100;
-
-
-                Bottom_WAF.Top = 250;
-                Bottom_WAF.Left = 1100;
+                Top_WOF.Location = TWOF_pos_1;
+                Bottom_WOF.Location = BWOF_pos_1;
 
             }
-            if (number == 2)//middle location
+            if (number == 2)
             {
-                Top_WAF.Top = 0;
-                Top_WAF.Left = 1100;
-
-                Bottom_WAF.Top = 375;
-                Bottom_WAF.Left = 1100;
-
+                Top_WOF.Location = TWOF_pos_2;
+                Bottom_WOF.Location = BWOF_pos_2;
             }
-            if (number == 3)//bottom location
+            if (number == 3)
             {
-                Top_WAF.Top = 0;
-                Top_WAF.Left = 1100;
-
-                Bottom_WAF.Top = 500;
-                Bottom_WAF.Left = 1100;
+                Top_WOF.Location = TWOF_pos_3;
+                Bottom_WOF.Location = BWOF_pos_3;
             }
             if (number == 4)
             {
-                Top_WAF.Top = 0;
-                Top_WAF.Left = 1100;
-
-                Bottom_WAF.Top = 500;
-                Bottom_WAF.Left = 1100;
-            }
-            if (number == 5)
-            {
-                Top_WAF.Top = 0;
-                Top_WAF.Left = 1100;
-
-                Bottom_WAF.Top = 500;
-                Bottom_WAF.Left = 1100;
-            }
-            if (number == 6)
-            {
-                Top_WAF.Top = 0;
-                Top_WAF.Left = 1100;
-
-                Bottom_WAF.Top = 500;
-                Bottom_WAF.Left = 1100;
+                Top_WOF.Location = TWOF_pos_4;
+                Bottom_WOF.Location = BWOF_pos_4;
             }
 
 
@@ -155,30 +138,32 @@ namespace Flappy_bird
             }
         }
 
-        private void reset_game()
+        private void Reset_game()
         {
             _score = 0;
-            Bottom_WAF.Left = 1100;
-            Top_WAF.Left = 1100;
-            guide_pic.Location = start_menu_guide;
+            guide_pic.Location = guide_pos;
             _pipeSpeed = 0;
             _gravity = 0;
         }
 
-        private void start_game()
+        private void Start_game()
         {
             _pipeSpeed = 5;
             _gravity = 3;
             game_timer.Start();
             Game_over_img.Hide();
             HighScore_lbl.Hide();
+            WOF_spawn();
         }
 
         private void Game_over()
         {
             game_timer.Stop();//stops game
+
             Get_HighScore();
-            Game_over_img.Location = game_over;
+
+            Game_over_img.Location = game_over_pos;
+
             Game_over_img.Show();
             HighScore_lbl.Show();
             Start_button.Show();
@@ -187,22 +172,21 @@ namespace Flappy_bird
 
         private void Title_screen()
         {
-            Game_Title.Location = start_menu_title;
-            guide_pic.Location = start_menu_guide;
-            Start_button.Location = start_menu_start;
-            Bottom_WAF.Left = 1100;
-            Top_WAF.Left = 1100;
+            Game_Title.Location = title_pos;
+            guide_pic.Location = guide_pos;
+            Start_button.Location = start_pos;
+            Ground_pic.Location = ground_pos;
+
             Game_over_img.Hide();
             HighScore_lbl.Hide();
-            Ground_pic.Location = ground;
         }
          
         private void Start_button_Click(object sender, EventArgs e)
         {
-            reset_game();
+            Reset_game();
             Start_button.Hide();
             Game_Title.Hide();
-            start_game();
+            Start_game();
         }
 
         private void Set_HighScore()
@@ -248,6 +232,17 @@ namespace Flappy_bird
             if (e.Button == MouseButtons.Left)
             {
                 _gravity = 4;
+            }
+        }
+
+        private void death_timer_Tick(object sender, EventArgs e)
+        {
+            guide_pic.Top += 5;
+            if (guide_pic.Top >= 600)
+            {
+
+                death_timer.Stop();
+
             }
         }
     }

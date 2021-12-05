@@ -36,17 +36,18 @@ namespace Flappy_bird
             this.Start_button = new System.Windows.Forms.PictureBox();
             this.score_lbl = new System.Windows.Forms.Label();
             this.Ground_pic = new System.Windows.Forms.PictureBox();
-            this.Bottom_WAF = new System.Windows.Forms.PictureBox();
-            this.Top_WAF = new System.Windows.Forms.PictureBox();
+            this.Bottom_WOF = new System.Windows.Forms.PictureBox();
+            this.Top_WOF = new System.Windows.Forms.PictureBox();
             this.guide_pic = new System.Windows.Forms.PictureBox();
             this.Game_over_img = new System.Windows.Forms.PictureBox();
             this.HighScore_lbl = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.death_timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Game_Title)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Start_button)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ground_pic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Bottom_WAF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Top_WAF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Bottom_WOF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Top_WOF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guide_pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Game_over_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -108,31 +109,31 @@ namespace Flappy_bird
             this.Ground_pic.TabIndex = 3;
             this.Ground_pic.TabStop = false;
             // 
-            // Bottom_WAF
+            // Bottom_WOF
             // 
-            this.Bottom_WAF.BackColor = System.Drawing.Color.Transparent;
-            this.Bottom_WAF.Image = global::Flappy_bird.Properties.Resources.waf;
-            this.Bottom_WAF.Location = new System.Drawing.Point(858, 369);
-            this.Bottom_WAF.Name = "Bottom_WAF";
-            this.Bottom_WAF.Size = new System.Drawing.Size(148, 840);
-            this.Bottom_WAF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.Bottom_WAF.TabIndex = 2;
-            this.Bottom_WAF.TabStop = false;
-            this.Bottom_WAF.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_down);
-            this.Bottom_WAF.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_up);
+            this.Bottom_WOF.BackColor = System.Drawing.Color.Transparent;
+            this.Bottom_WOF.Image = global::Flappy_bird.Properties.Resources.waf;
+            this.Bottom_WOF.Location = new System.Drawing.Point(858, 369);
+            this.Bottom_WOF.Name = "Bottom_WOF";
+            this.Bottom_WOF.Size = new System.Drawing.Size(148, 840);
+            this.Bottom_WOF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.Bottom_WOF.TabIndex = 2;
+            this.Bottom_WOF.TabStop = false;
+            this.Bottom_WOF.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_down);
+            this.Bottom_WOF.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_up);
             // 
-            // Top_WAF
+            // Top_WOF
             // 
-            this.Top_WAF.BackColor = System.Drawing.Color.Transparent;
-            this.Top_WAF.Image = global::Flappy_bird.Properties.Resources.waf;
-            this.Top_WAF.Location = new System.Drawing.Point(858, -637);
-            this.Top_WAF.Name = "Top_WAF";
-            this.Top_WAF.Size = new System.Drawing.Size(148, 840);
-            this.Top_WAF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.Top_WAF.TabIndex = 1;
-            this.Top_WAF.TabStop = false;
-            this.Top_WAF.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_down);
-            this.Top_WAF.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_up);
+            this.Top_WOF.BackColor = System.Drawing.Color.Transparent;
+            this.Top_WOF.Image = global::Flappy_bird.Properties.Resources.waf;
+            this.Top_WOF.Location = new System.Drawing.Point(858, -800);
+            this.Top_WOF.Name = "Top_WOF";
+            this.Top_WOF.Size = new System.Drawing.Size(148, 840);
+            this.Top_WOF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.Top_WOF.TabIndex = 1;
+            this.Top_WOF.TabStop = false;
+            this.Top_WOF.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_down);
+            this.Top_WOF.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_up);
             // 
             // guide_pic
             // 
@@ -178,11 +179,17 @@ namespace Flappy_bird
             this.pictureBox1.Image = global::Flappy_bird.Properties.Resources.Forest_background;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(682, 674);
+            this.pictureBox1.Size = new System.Drawing.Size(1024, 838);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_down);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_up);
+            // 
+            // death_timer
+            // 
+            this.death_timer.Interval = 10;
+            this.death_timer.Tick += new System.EventHandler(this.death_timer_Tick);
             // 
             // Game_Form
             // 
@@ -192,15 +199,15 @@ namespace Flappy_bird
             this.BackgroundImage = global::Flappy_bird.Properties.Resources.Forest_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1008, 799);
+            this.Controls.Add(this.Start_button);
+            this.Controls.Add(this.Game_over_img);
             this.Controls.Add(this.guide_pic);
             this.Controls.Add(this.HighScore_lbl);
-            this.Controls.Add(this.Game_over_img);
             this.Controls.Add(this.Game_Title);
-            this.Controls.Add(this.Start_button);
             this.Controls.Add(this.score_lbl);
             this.Controls.Add(this.Ground_pic);
-            this.Controls.Add(this.Bottom_WAF);
-            this.Controls.Add(this.Top_WAF);
+            this.Controls.Add(this.Bottom_WOF);
+            this.Controls.Add(this.Top_WOF);
             this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -212,8 +219,8 @@ namespace Flappy_bird
             ((System.ComponentModel.ISupportInitialize)(this.Game_Title)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Start_button)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ground_pic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Bottom_WAF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Top_WAF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Bottom_WOF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Top_WOF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guide_pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Game_over_img)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -225,8 +232,8 @@ namespace Flappy_bird
         #endregion
 
         private System.Windows.Forms.PictureBox guide_pic;
-        private System.Windows.Forms.PictureBox Top_WAF;
-        private System.Windows.Forms.PictureBox Bottom_WAF;
+        private System.Windows.Forms.PictureBox Top_WOF;
+        private System.Windows.Forms.PictureBox Bottom_WOF;
         private System.Windows.Forms.PictureBox Ground_pic;
         private System.Windows.Forms.Label score_lbl;
         private System.Windows.Forms.Timer game_timer;
@@ -235,6 +242,7 @@ namespace Flappy_bird
         private System.Windows.Forms.Label HighScore_lbl;
         private System.Windows.Forms.PictureBox Game_over_img;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer death_timer;
     }
 }
 
