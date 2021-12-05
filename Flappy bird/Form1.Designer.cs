@@ -41,6 +41,7 @@ namespace Flappy_bird
             this.guide_pic = new System.Windows.Forms.PictureBox();
             this.Game_over_img = new System.Windows.Forms.PictureBox();
             this.HighScore_lbl = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Game_Title)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Start_button)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ground_pic)).BeginInit();
@@ -48,6 +49,7 @@ namespace Flappy_bird
             ((System.ComponentModel.ISupportInitialize)(this.Top_pipe_pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guide_pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Game_over_img)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // game_timer
@@ -116,6 +118,8 @@ namespace Flappy_bird
             this.Bot_pipe_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Bot_pipe_pic.TabIndex = 2;
             this.Bot_pipe_pic.TabStop = false;
+            this.Bot_pipe_pic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_down);
+            this.Bot_pipe_pic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_up);
             // 
             // Top_pipe_pic
             // 
@@ -127,6 +131,8 @@ namespace Flappy_bird
             this.Top_pipe_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Top_pipe_pic.TabIndex = 1;
             this.Top_pipe_pic.TabStop = false;
+            this.Top_pipe_pic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_down);
+            this.Top_pipe_pic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_up);
             // 
             // guide_pic
             // 
@@ -140,6 +146,8 @@ namespace Flappy_bird
             this.guide_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.guide_pic.TabIndex = 0;
             this.guide_pic.TabStop = false;
+            this.guide_pic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_down);
+            this.guide_pic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_up);
             // 
             // Game_over_img
             // 
@@ -163,12 +171,26 @@ namespace Flappy_bird
             this.HighScore_lbl.TabIndex = 1;
             this.HighScore_lbl.Text = "HighScore: ";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Flappy_bird.Properties.Resources.Forest_background;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(682, 674);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_down);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_up);
+            // 
             // Game_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Turquoise;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BackgroundImage = global::Flappy_bird.Properties.Resources.Forest_background;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(682, 674);
+            this.Controls.Add(this.guide_pic);
             this.Controls.Add(this.HighScore_lbl);
             this.Controls.Add(this.Game_over_img);
             this.Controls.Add(this.Game_Title);
@@ -177,9 +199,10 @@ namespace Flappy_bird
             this.Controls.Add(this.Ground_pic);
             this.Controls.Add(this.Bot_pipe_pic);
             this.Controls.Add(this.Top_pipe_pic);
-            this.Controls.Add(this.guide_pic);
+            this.Controls.Add(this.pictureBox1);
+            this.DoubleBuffered = true;
             this.Name = "Game_Form";
-            this.Text = "Flappy Guide";
+            this.Text = "TerraFlap";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gamekeyisdown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gamekeyisup);
             ((System.ComponentModel.ISupportInitialize)(this.Game_Title)).EndInit();
@@ -189,6 +212,7 @@ namespace Flappy_bird
             ((System.ComponentModel.ISupportInitialize)(this.Top_pipe_pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guide_pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Game_over_img)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,6 +230,7 @@ namespace Flappy_bird
         private System.Windows.Forms.PictureBox Game_Title;
         private System.Windows.Forms.Label HighScore_lbl;
         private System.Windows.Forms.PictureBox Game_over_img;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

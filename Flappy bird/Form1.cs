@@ -37,6 +37,7 @@ namespace Flappy_bird
         {
             InitializeComponent();
             Title_screen();
+            Get_HighScore();
 
         }
 
@@ -47,7 +48,6 @@ namespace Flappy_bird
             Top_pipe_pic.Left -= _pipeSpeed;
             score_lbl.Text = _score.ToString();
 
-            
             //if left side pipe hits coor 240, add point
             if (Bot_pipe_pic.Left == 240 || Top_pipe_pic.Left == 240)
             {
@@ -56,15 +56,11 @@ namespace Flappy_bird
                 Set_HighScore();
             }
 
-
-
             //when pipe goes off screen, change pipe to start over again
             if (Bot_pipe_pic.Left < -100 || Top_pipe_pic.Left < -100)
             {
                 pipe_location();
             }
-
-
 
             //if guide hits pipe/ground
             if (guide_pic.Bounds.IntersectsWith(Bot_pipe_pic.Bounds) || guide_pic.Bounds.IntersectsWith(Top_pipe_pic.Bounds) || guide_pic.Bounds.IntersectsWith(Ground_pic.Bounds))
@@ -154,6 +150,8 @@ namespace Flappy_bird
             _pipeSpeed = 5;
             _gravity = 3;
             game_timer.Start();
+            Game_over_img.Hide();
+            HighScore_lbl.Hide();
         }
 
         private void Game_over()
@@ -175,9 +173,8 @@ namespace Flappy_bird
             Top_pipe_pic.Left = 700;
             Game_over_img.Hide();
             HighScore_lbl.Hide();
-
         }
-
+         
         private void Start_button_Click(object sender, EventArgs e)
         {
             reset_game();
@@ -215,5 +212,21 @@ namespace Flappy_bird
             
         }
 
+        private void Left_mouse_down(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                _gravity = -4;
+            }
+
+        }
+
+        private void Left_mouse_up(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                _gravity = 4;
+            }
+        }
     }
 }
