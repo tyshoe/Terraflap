@@ -1,11 +1,8 @@
 ﻿//ideas
-//add highscore with text file
-//add leaderboards screen
-//add different modes
 //increase difficulty with playtime?
-//difficulty settings
 //add more sounds for death and flap
-//start menu
+//add currency/store
+//add options menu for cosmetics
 
 using System;
 using System.IO;
@@ -34,6 +31,7 @@ namespace Flappy_bird
         private Point start_pos = new Point(320, 500);
         private Point ground_pos = new Point(0, 664);
         private Point game_over_pos = new Point(320, 150);
+        private Point high_score_pos = new Point(310, 412);
 
         private Point TWOF_pos_1 = new Point(1050, -780);
         private Point TWOF_pos_2 = new Point(1050, -660);
@@ -61,7 +59,7 @@ namespace Flappy_bird
             score_lbl.Text = _score.ToString();
 
             //if left side WOF hits coor 240, add point
-            if (Bottom_WOF.Left == 240 || Top_WOF.Left == 240)
+            if (Bottom_WOF.Left == 360 || Top_WOF.Left == 360)
             {
                 _score++;
                 Gain_point();
@@ -69,7 +67,7 @@ namespace Flappy_bird
             }
 
             //when wof goes off screen, respawn wof on right
-            if (Bottom_WOF.Left < -100 || Top_WOF.Left < -100)
+            if (Bottom_WOF.Left < -150 || Top_WOF.Left < -150)
             {
                 WOF_spawn();
             }
@@ -138,13 +136,6 @@ namespace Flappy_bird
             }
         }
 
-        private void Reset_game()
-        {
-            _score = 0;
-            guide_pic.Location = guide_pos;
-            _pipeSpeed = 0;
-            _gravity = 0;
-        }
 
         private void Start_game()
         {
@@ -172,10 +163,7 @@ namespace Flappy_bird
 
         private void Title_screen()
         {
-            Game_Title.Location = title_pos;
-            guide_pic.Location = guide_pos;
-            Start_button.Location = start_pos;
-            Ground_pic.Location = ground_pos;
+            Start_conditions();
 
             Game_over_img.Hide();
             HighScore_lbl.Hide();
@@ -183,10 +171,19 @@ namespace Flappy_bird
          
         private void Start_button_Click(object sender, EventArgs e)
         {
-            Reset_game();
+            Start_conditions();
             Start_button.Hide();
             Game_Title.Hide();
             Start_game();
+        }
+        private void Start_conditions()
+        {
+            Game_Title.Location = title_pos;
+            guide_pic.Location = guide_pos;
+            Start_button.Location = start_pos;
+            Ground_pic.Location = ground_pos;
+            HighScore_lbl.Location = high_score_pos;
+            _score = 0;
         }
 
         private void Set_HighScore()
@@ -231,7 +228,7 @@ namespace Flappy_bird
         {
             if (e.Button == MouseButtons.Left)
             {
-                _gravity = 4;
+                _gravity = 3;
             }
         }
 

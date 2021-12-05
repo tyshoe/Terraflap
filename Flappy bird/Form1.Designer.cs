@@ -92,7 +92,7 @@ namespace Flappy_bird
             this.score_lbl.BackColor = System.Drawing.Color.Transparent;
             this.score_lbl.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.score_lbl.ForeColor = System.Drawing.Color.Black;
-            this.score_lbl.Location = new System.Drawing.Point(310, 242);
+            this.score_lbl.Location = new System.Drawing.Point(473, 206);
             this.score_lbl.Name = "score_lbl";
             this.score_lbl.Size = new System.Drawing.Size(52, 60);
             this.score_lbl.TabIndex = 4;
@@ -167,10 +167,10 @@ namespace Flappy_bird
             // 
             this.HighScore_lbl.AutoSize = true;
             this.HighScore_lbl.BackColor = System.Drawing.Color.Transparent;
-            this.HighScore_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HighScore_lbl.Location = new System.Drawing.Point(85, 268);
+            this.HighScore_lbl.Font = new System.Drawing.Font("Unispace", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HighScore_lbl.Location = new System.Drawing.Point(310, 412);
             this.HighScore_lbl.Name = "HighScore_lbl";
-            this.HighScore_lbl.Size = new System.Drawing.Size(124, 25);
+            this.HighScore_lbl.Size = new System.Drawing.Size(344, 58);
             this.HighScore_lbl.TabIndex = 1;
             this.HighScore_lbl.Text = "HighScore: ";
             // 
