@@ -84,7 +84,7 @@ namespace Flappy_bird
             this.Start_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Start_button.BackColor = System.Drawing.Color.Transparent;
             this.Start_button.Image = global::Flappy_bird.Properties.Resources.start_button;
-            this.Start_button.Location = new System.Drawing.Point(320, 537);
+            this.Start_button.Location = new System.Drawing.Point(320, 525);
             this.Start_button.Margin = new System.Windows.Forms.Padding(1);
             this.Start_button.Name = "Start_button";
             this.Start_button.Size = new System.Drawing.Size(384, 88);
@@ -100,7 +100,7 @@ namespace Flappy_bird
             this.score_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(188)))), ((int)(((byte)(243)))));
             this.score_lbl.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.score_lbl.ForeColor = System.Drawing.Color.Black;
-            this.score_lbl.Location = new System.Drawing.Point(564, 260);
+            this.score_lbl.Location = new System.Drawing.Point(585, 237);
             this.score_lbl.Name = "score_lbl";
             this.score_lbl.Size = new System.Drawing.Size(51, 60);
             this.score_lbl.TabIndex = 4;
@@ -168,7 +168,7 @@ namespace Flappy_bird
             this.Game_over_img.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Game_over_img.BackColor = System.Drawing.Color.Transparent;
             this.Game_over_img.Image = global::Flappy_bird.Properties.Resources.game_over;
-            this.Game_over_img.Location = new System.Drawing.Point(320, 100);
+            this.Game_over_img.Location = new System.Drawing.Point(320, 75);
             this.Game_over_img.Margin = new System.Windows.Forms.Padding(1);
             this.Game_over_img.Name = "Game_over_img";
             this.Game_over_img.Size = new System.Drawing.Size(384, 88);
@@ -182,7 +182,7 @@ namespace Flappy_bird
             this.HighScore_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(179)))), ((int)(((byte)(71)))));
             this.HighScore_lbl.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HighScore_lbl.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.HighScore_lbl.Location = new System.Drawing.Point(623, 413);
+            this.HighScore_lbl.Location = new System.Drawing.Point(601, 386);
             this.HighScore_lbl.Name = "HighScore_lbl";
             this.HighScore_lbl.Size = new System.Drawing.Size(103, 60);
             this.HighScore_lbl.TabIndex = 1;
@@ -210,12 +210,12 @@ namespace Flappy_bird
             // 
             this.hi_score.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.hi_score.BackColor = System.Drawing.Color.Transparent;
-            this.hi_score.Image = global::Flappy_bird.Properties.Resources.hi_score;
-            this.hi_score.Location = new System.Drawing.Point(297, 400);
+            this.hi_score.Image = ((System.Drawing.Image)(resources.GetObject("hi_score.Image")));
+            this.hi_score.Location = new System.Drawing.Point(273, 375);
             this.hi_score.Margin = new System.Windows.Forms.Padding(1);
             this.hi_score.Name = "hi_score";
-            this.hi_score.Size = new System.Drawing.Size(457, 88);
-            this.hi_score.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.hi_score.Size = new System.Drawing.Size(478, 88);
+            this.hi_score.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.hi_score.TabIndex = 9;
             this.hi_score.TabStop = false;
             // 
@@ -224,7 +224,7 @@ namespace Flappy_bird
             this.score.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.score.BackColor = System.Drawing.Color.Transparent;
             this.score.Image = global::Flappy_bird.Properties.Resources.score;
-            this.score.Location = new System.Drawing.Point(320, 250);
+            this.score.Location = new System.Drawing.Point(320, 225);
             this.score.Margin = new System.Windows.Forms.Padding(1);
             this.score.Name = "score";
             this.score.Size = new System.Drawing.Size(384, 88);

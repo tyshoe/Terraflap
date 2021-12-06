@@ -130,9 +130,6 @@
   <data name="Forest_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Forest_background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="hi-score" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\hi-score.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="HighScores" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\HighScores.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
@@ -153,5 +150,8 @@
   </data>
   <data name="death" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\death.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="highscore" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\highscore.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

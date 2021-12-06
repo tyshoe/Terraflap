@@ -40,8 +40,8 @@ namespace Flappy_bird
         private Point game_over_pos = new Point(320, 75);
         private Point score_pic_pos = new Point(320, 225);
         private Point score_txt_pos = new Point(584, 235);
-        private Point high_score_pic_pos = new Point(284, 375);
-        private Point high_score_txt_pos = new Point(622, 385);
+        private Point high_score_pic_pos = new Point(273, 375);
+        private Point high_score_txt_pos = new Point(600, 385);
         private Point start_pos = new Point(320, 525);
 
         //top wall of flesh points

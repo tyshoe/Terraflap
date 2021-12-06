@@ -112,9 +112,9 @@ namespace Flappy_bird.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap hi_score {
+        internal static System.Drawing.Bitmap highscore {
             get {
-                object obj = ResourceManager.GetObject("hi-score", resourceCulture);
+                object obj = ResourceManager.GetObject("highscore", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

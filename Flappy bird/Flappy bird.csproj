@@ -105,9 +105,6 @@
     <None Include="Resources\ground.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\hi-score.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\score.png" />
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\death.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\highscore.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
