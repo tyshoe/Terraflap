@@ -109,7 +109,8 @@ namespace Flappy_bird
 
 
         //timers(game_timer + death_timer)
-        private void gameTimerEvent(object sender, EventArgs e)
+
+        private void GameTimerEvent(object sender, EventArgs e)
         {
             guide_pic.Top += _gravity;
             Bottom_WOF.Left -= _pipeSpeed;
@@ -138,17 +139,15 @@ namespace Flappy_bird
 
             //if guide hits wof/ground
             if (guide_pic.Bounds.IntersectsWith(Bottom_WOF.Bounds) || guide_pic.Bounds.IntersectsWith(Top_WOF.Bounds)
-                || guide_pic.Bounds.IntersectsWith(Bottom_WOF2.Bounds) || guide_pic.Bounds.IntersectsWith(Top_WOF2.Bounds) 
+                || guide_pic.Bounds.IntersectsWith(Bottom_WOF2.Bounds) || guide_pic.Bounds.IntersectsWith(Top_WOF2.Bounds)
                 || guide_pic.Bounds.IntersectsWith(Ground_pic.Bounds))
             {
                 Play_death();
                 Game_over();
                 death_timer.Start();
             }
-
         }
-
-        private void death_timer_Tick(object sender, EventArgs e)
+        private void Death_timer_Tick(object sender, EventArgs e)
         {
             guide_pic.Top += 5;
             if (guide_pic.Top >= 600)
@@ -159,8 +158,6 @@ namespace Flappy_bird
             }
         }
 
-
-
         //events
         private void Start_button_Click(object sender, EventArgs e)
         {
@@ -168,6 +165,7 @@ namespace Flappy_bird
             Hide_start_menu();
             Hide_end_menu();
             Start_game();
+            death_timer.Stop();
         }
 
 
@@ -401,6 +399,8 @@ namespace Flappy_bird
             SoundPlayer audio = new SoundPlayer(Properties.Resources.death);
             audio.Play();
         }
+
+
 
 
     }

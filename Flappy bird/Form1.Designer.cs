@@ -64,7 +64,7 @@ namespace Flappy_bird
             // game_timer
             // 
             this.game_timer.Interval = 15;
-            this.game_timer.Tick += new System.EventHandler(this.gameTimerEvent);
+            this.game_timer.Tick += new System.EventHandler(this.GameTimerEvent);
             // 
             // Game_Title
             // 
@@ -204,7 +204,7 @@ namespace Flappy_bird
             // death_timer
             // 
             this.death_timer.Interval = 10;
-            this.death_timer.Tick += new System.EventHandler(this.death_timer_Tick);
+            this.death_timer.Tick += new System.EventHandler(this.Death_timer_Tick);
             // 
             // hi_score
             // 
