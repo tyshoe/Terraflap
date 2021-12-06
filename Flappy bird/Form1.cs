@@ -19,6 +19,7 @@ using System.Media;
 
 namespace Flappy_bird
 {
+    
     public partial class Game_Form : Form
     {
         private int _pipeSpeed;
@@ -27,10 +28,13 @@ namespace Flappy_bird
         private int _HighScore;
 
 
+
         //title, character, ground
         private Point title_pos = new Point(248, 100);
-        private Point guide_pos = new Point(486, 283);
+        private Point guide_pos = new Point(256, 283);
         private Point ground_pos = new Point(0, 664);
+        //score while running
+        private Point score_run_pos = new Point(486, 200);
 
         //buttons
         private Point game_over_pos = new Point(320, 75);
@@ -51,6 +55,17 @@ namespace Flappy_bird
         private Point BWOF_pos_3 = new Point(1050, 492);
         private Point BWOF_pos_4 = new Point(1050, 612);
 
+        //start pos top wall of flesh
+        private Point TWOF2_pos_1 = new Point(1650, -780);
+        private Point TWOF2_pos_2 = new Point(1650, -660);
+        private Point TWOF2_pos_3 = new Point(1650, -540);
+        private Point TWOF2_pos_4 = new Point(1650, -420);
+        //start pos bottom wall of flesh 
+        private Point BWOF2_pos_1 = new Point(1650, 252);
+        private Point BWOF2_pos_2 = new Point(1650, 372);
+        private Point BWOF2_pos_3 = new Point(1650, 492);
+        private Point BWOF2_pos_4 = new Point(1650, 612);
+
         public Game_Form()
         {
             InitializeComponent();
@@ -70,7 +85,7 @@ namespace Flappy_bird
         {
             if (e.KeyCode == Keys.Space)
             {
-                _gravity = 3;
+                _gravity = 4;
             }
         }
 
@@ -86,7 +101,7 @@ namespace Flappy_bird
         {
             if (e.Button == MouseButtons.Left)
             {
-                _gravity = 3;
+                _gravity = 4;
             }
         }
 
@@ -99,10 +114,12 @@ namespace Flappy_bird
             guide_pic.Top += _gravity;
             Bottom_WOF.Left -= _pipeSpeed;
             Top_WOF.Left -= _pipeSpeed;
+            Bottom_WOF2.Left -= _pipeSpeed;
+            Top_WOF2.Left -= _pipeSpeed;
             score_lbl.Text = _score.ToString();
 
-            //if left side WOF hits coor 360, add point
-            if (Bottom_WOF.Left == 360 || Top_WOF.Left == 360)
+            //if left side WOF hits coor 100, add point
+            if (Bottom_WOF.Left == 100 || Top_WOF.Left == 100 || Bottom_WOF2.Left == 100 || Top_WOF2.Left == 100)
             {
                 _score++;
                 Play_score();
@@ -112,11 +129,17 @@ namespace Flappy_bird
             //when wof goes off screen, respawn wof on right
             if (Bottom_WOF.Left < -150 || Top_WOF.Left < -150)
             {
-                Spawn_WOF();
+                Spawn_WOF1();
+            }
+            if (Bottom_WOF2.Left < -150 || Top_WOF2.Left < -150)
+            {
+                Spawn_WOF2();
             }
 
             //if guide hits wof/ground
-            if (guide_pic.Bounds.IntersectsWith(Bottom_WOF.Bounds) || guide_pic.Bounds.IntersectsWith(Top_WOF.Bounds) || guide_pic.Bounds.IntersectsWith(Ground_pic.Bounds))
+            if (guide_pic.Bounds.IntersectsWith(Bottom_WOF.Bounds) || guide_pic.Bounds.IntersectsWith(Top_WOF.Bounds)
+                || guide_pic.Bounds.IntersectsWith(Bottom_WOF2.Bounds) || guide_pic.Bounds.IntersectsWith(Top_WOF2.Bounds) 
+                || guide_pic.Bounds.IntersectsWith(Ground_pic.Bounds))
             {
                 Play_death();
                 Game_over();
@@ -124,6 +147,7 @@ namespace Flappy_bird
             }
 
         }
+
         private void death_timer_Tick(object sender, EventArgs e)
         {
             guide_pic.Top += 5;
@@ -134,7 +158,6 @@ namespace Flappy_bird
 
             }
         }
-
 
 
 
@@ -178,7 +201,7 @@ namespace Flappy_bird
         }
 
         //spawn location options
-        private void Spawn_WOF()
+        private void Spawn_WOF1()
         {
             Random random = new Random();
             int number = random.Next(1,5);
@@ -205,15 +228,79 @@ namespace Flappy_bird
                 Bottom_WOF.Location = BWOF_pos_4;
             }
         }
+        private void Spawn_WOF2()
+        {
+            Random random = new Random();
+            int number = random.Next(1, 5);
+
+            if (number == 1)
+            {
+                Top_WOF2.Location = TWOF_pos_1;
+                Bottom_WOF2.Location = BWOF_pos_1;
+
+            }
+            if (number == 2)
+            {
+                Top_WOF2.Location = TWOF_pos_2;
+                Bottom_WOF2.Location = BWOF_pos_2;
+            }
+            if (number == 3)
+            {
+                Top_WOF2.Location = TWOF_pos_3;
+                Bottom_WOF2.Location = BWOF_pos_3;
+            }
+            if (number == 4)
+            {
+                Top_WOF2.Location = TWOF_pos_4;
+                Bottom_WOF2.Location = BWOF_pos_4;
+            }
+        }
+        private void Start_WOF2()
+        {
+            Random random = new Random();
+            int number = random.Next(1, 5);
+
+            if (number == 1)
+            {
+                Top_WOF2.Location = TWOF2_pos_1;
+                Bottom_WOF2.Location = BWOF2_pos_1;
+
+            }
+            if (number == 2)
+            {
+                Top_WOF2.Location = TWOF2_pos_2;
+                Bottom_WOF2.Location = BWOF2_pos_2;
+            }
+            if (number == 3)
+            {
+                Top_WOF2.Location = TWOF2_pos_3;
+                Bottom_WOF2.Location = BWOF2_pos_3;
+            }
+            if (number == 4)
+            {
+                Top_WOF2.Location = TWOF2_pos_4;
+                Bottom_WOF2.Location = BWOF2_pos_4;
+            }
+        }
+
 
 
         //start + end game
         private void Start_game()
         {
             _pipeSpeed = 5;
-            _gravity = 3;
+            _gravity = 4;
+
             game_timer.Start();
-            Spawn_WOF();
+
+            Spawn_WOF1();
+            Start_WOF2();
+            Top_WOF2.Show();
+            Bottom_WOF2.Show();
+            score_lbl.Location = score_run_pos;
+            score_lbl.BackColor = Color.Transparent;
+            score_lbl.Show();
+
         }
         private void Game_over()
         {
@@ -236,6 +323,8 @@ namespace Flappy_bird
             score_lbl.Hide();
             hi_score.Hide();
             HighScore_lbl.Hide();
+            Top_WOF2.Hide();
+            Bottom_WOF2.Hide();
         }
         private void Hide_start_menu()
         {
@@ -258,6 +347,10 @@ namespace Flappy_bird
             HighScore_lbl.Show();
             hi_score.Show();
             Start_button.Show();
+
+            //moves score and fixes back color
+            score_lbl.Location = score_txt_pos;
+            score_lbl.BackColor = Color.FromArgb(164, 188, 243);
         }
         private void Hide_end_menu()
         {
@@ -308,6 +401,7 @@ namespace Flappy_bird
             SoundPlayer audio = new SoundPlayer(Properties.Resources.death);
             audio.Play();
         }
+
 
     }
 }

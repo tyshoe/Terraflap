@@ -45,6 +45,8 @@ namespace Flappy_bird
             this.death_timer = new System.Windows.Forms.Timer(this.components);
             this.hi_score = new System.Windows.Forms.PictureBox();
             this.score = new System.Windows.Forms.PictureBox();
+            this.Top_WOF2 = new System.Windows.Forms.PictureBox();
+            this.Bottom_WOF2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Game_Title)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Start_button)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ground_pic)).BeginInit();
@@ -55,6 +57,8 @@ namespace Flappy_bird
             ((System.ComponentModel.ISupportInitialize)(this.Background_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hi_score)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.score)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Top_WOF2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Bottom_WOF2)).BeginInit();
             this.SuspendLayout();
             // 
             // game_timer
@@ -96,12 +100,14 @@ namespace Flappy_bird
             this.score_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(188)))), ((int)(((byte)(243)))));
             this.score_lbl.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.score_lbl.ForeColor = System.Drawing.Color.Black;
-            this.score_lbl.Location = new System.Drawing.Point(584, 260);
+            this.score_lbl.Location = new System.Drawing.Point(564, 260);
             this.score_lbl.Name = "score_lbl";
             this.score_lbl.Size = new System.Drawing.Size(51, 60);
             this.score_lbl.TabIndex = 4;
             this.score_lbl.Text = "0";
             this.score_lbl.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.score_lbl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_down);
+            this.score_lbl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_up);
             // 
             // Ground_pic
             // 
@@ -113,6 +119,8 @@ namespace Flappy_bird
             this.Ground_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.Ground_pic.TabIndex = 3;
             this.Ground_pic.TabStop = false;
+            this.Ground_pic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_down);
+            this.Ground_pic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_up);
             // 
             // Bottom_WOF
             // 
@@ -174,7 +182,7 @@ namespace Flappy_bird
             this.HighScore_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(179)))), ((int)(((byte)(71)))));
             this.HighScore_lbl.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HighScore_lbl.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.HighScore_lbl.Location = new System.Drawing.Point(622, 410);
+            this.HighScore_lbl.Location = new System.Drawing.Point(623, 413);
             this.HighScore_lbl.Name = "HighScore_lbl";
             this.HighScore_lbl.Size = new System.Drawing.Size(103, 60);
             this.HighScore_lbl.TabIndex = 1;
@@ -224,6 +232,32 @@ namespace Flappy_bird
             this.score.TabIndex = 10;
             this.score.TabStop = false;
             // 
+            // Top_WOF2
+            // 
+            this.Top_WOF2.BackColor = System.Drawing.Color.Transparent;
+            this.Top_WOF2.Image = global::Flappy_bird.Properties.Resources.waf;
+            this.Top_WOF2.Location = new System.Drawing.Point(708, -638);
+            this.Top_WOF2.Name = "Top_WOF2";
+            this.Top_WOF2.Size = new System.Drawing.Size(148, 840);
+            this.Top_WOF2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.Top_WOF2.TabIndex = 11;
+            this.Top_WOF2.TabStop = false;
+            this.Top_WOF2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_down);
+            this.Top_WOF2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_up);
+            // 
+            // Bottom_WOF2
+            // 
+            this.Bottom_WOF2.BackColor = System.Drawing.Color.Transparent;
+            this.Bottom_WOF2.Image = global::Flappy_bird.Properties.Resources.waf;
+            this.Bottom_WOF2.Location = new System.Drawing.Point(708, 463);
+            this.Bottom_WOF2.Name = "Bottom_WOF2";
+            this.Bottom_WOF2.Size = new System.Drawing.Size(148, 840);
+            this.Bottom_WOF2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.Bottom_WOF2.TabIndex = 12;
+            this.Bottom_WOF2.TabStop = false;
+            this.Bottom_WOF2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_down);
+            this.Bottom_WOF2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Left_mouse_up);
+            // 
             // Game_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,15 +266,17 @@ namespace Flappy_bird
             this.BackgroundImage = global::Flappy_bird.Properties.Resources.Forest_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1008, 799);
-            this.Controls.Add(this.score_lbl);
             this.Controls.Add(this.HighScore_lbl);
-            this.Controls.Add(this.score);
             this.Controls.Add(this.hi_score);
             this.Controls.Add(this.Start_button);
+            this.Controls.Add(this.score_lbl);
+            this.Controls.Add(this.score);
             this.Controls.Add(this.Game_over_img);
             this.Controls.Add(this.guide_pic);
-            this.Controls.Add(this.Game_Title);
             this.Controls.Add(this.Ground_pic);
+            this.Controls.Add(this.Bottom_WOF2);
+            this.Controls.Add(this.Top_WOF2);
+            this.Controls.Add(this.Game_Title);
             this.Controls.Add(this.Bottom_WOF);
             this.Controls.Add(this.Top_WOF);
             this.Controls.Add(this.Background_img);
@@ -261,6 +297,8 @@ namespace Flappy_bird
             ((System.ComponentModel.ISupportInitialize)(this.Background_img)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hi_score)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.score)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Top_WOF2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Bottom_WOF2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,6 +320,8 @@ namespace Flappy_bird
         private System.Windows.Forms.Timer death_timer;
         private System.Windows.Forms.PictureBox hi_score;
         private System.Windows.Forms.PictureBox score;
+        private System.Windows.Forms.PictureBox Top_WOF2;
+        private System.Windows.Forms.PictureBox Bottom_WOF2;
     }
 }
 
